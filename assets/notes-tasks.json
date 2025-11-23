@@ -1,0 +1,51 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Grocery list",
+      "category": "notes",
+      "content": "Bread, eggs, flour, olive oil, chicken breast, broccoli.",
+      "createdAt": "2025-01-27T10:30:00",
+      "updatedAt": "2025-01-27T10:30:00",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "title": "Workout plan",
+      "category": "notes",
+      "content": "PPL split + 20 min incline walking after sessions.",
+      "createdAt": "2025-01-26T15:00:00",
+      "updatedAt": "2025-01-27T09:20:00",
+      "status": "active"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 100,
+      "title": "Finish JavaScript module",
+      "category": "task",
+      "content": "Complete Programming Paradigms module from your Meta course.",
+      "createdAt": "2025-01-27T08:15:00",
+      "updatedAt": "2025-01-27T08:15:00",
+      "status": "active"      
+    },
+    {
+      "id": 101,
+      "title": "Fix layout spacing",
+      "category": "task",
+      "content": "Detail panel is too far right — adjust flex + max-width.",
+      "createdAt": "2025-01-27T12:05:00",
+      "updatedAt": "2025-01-27T12:05:00",
+      "status": "active"      
+    },
+    {
+      "id": 102,
+      "title": "Add new features",
+      "category": "task",
+      "content": "Add ability to create, edit and delete notes.",
+      "createdAt": "2025-01-26T10:10:00",
+      "updatedAt": "2025-01-26T10:10:00",
+      "status": "active"      
+    }
+  ]
+}

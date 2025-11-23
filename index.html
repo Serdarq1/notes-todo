@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nase | Tasks & To-do</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="ml-12 mr-12 bg-white min-h-screen">
+    <!-- Navbar -->
+    <div class="navbar mb-6 flex items-center justify-between" id="navbar">
+        <div class="logo flex items-center gap-2">
+            <a href="./index.html" class="flex items-center gap-2">
+                <img src="./assets/logo.png" class="w-20 h-20 cursor-pointer" />
+            </a>
+        </div>
+
+        <div class="search flex-1 max-w-md mx-6">
+            <div class="relative">
+                <!-- search icon -->
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 opacity-60">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="6"></circle>
+                        <line x1="16" y1="16" x2="21" y2="21"></line>
+                    </svg>
+                </span>
+                <input
+                    id="search-bar"
+                    type="text"
+                    class="w-full border border-slate-200 pl-9 pr-3 py-2 rounded-2xl text-xs font-medium bg-white/80 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-400 placeholder:text-slate-400 shadow-sm"
+                    placeholder="Search notes, tasks..."
+                />
+            </div>
+        </div>
+
+        <div class="profile">
+            <button class="profile-btn w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center shadow-sm hover:bg-indigo-200">
+                <!-- user icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="3"></circle>
+                    <path d="M5 20c1.5-3 3.5-4.5 7-4.5s5.5 1.5 7 4.5"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="main flex flex-col lg:flex-row gap-8 items-start mx-auto" id="main">
+        <!-- Sidebar -->
+        <div class="bg-gray-100 sidebar-card shadow-[0_18px_45px_rgba(15,23,42,0.06)] p-5 rounded-2xl w-60 h-screen text-left border border-slate-100">
+            <p class="text-xs font-semibold tracking-[0.18em] text-slate-400 mb-6">WORKSPACE</p>
+            <div class="mt-6">
+                <ul class="text-slate-600 space-y-2">
+                    <li class="nav-item active flex items-center cursor-pointer px-3 py-2 rounded-xl" id="tasks">
+                        <!-- Tasks icon -->
+                        <span class="mr-2 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                <path d="M8 9h8M8 13h5"></path>
+                            </svg>
+                        </span>
+                        <p class="text-sm font-medium">Tasks</p>
+                    </li>
+                    <li class="nav-item flex items-center cursor-pointer px-3 py-2 rounded-xl" id="notes">
+                        <!-- Notes icon -->
+                        <span class="mr-2 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 4h9l3 3v13H6z"></path>
+                                <path d="M9 9h6M9 13h3"></path>
+                            </svg>
+                        </span>
+                        <p class="text-sm font-medium">Notes</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Notes/Tasks based on which is chosen -->
+        <div class="notes-tasks flex-1" id="notes-tasks">
+            <h2 class="section-title mb-5 inline-flex items-center gap-2 px-4 py-3 text-2xl">
+                <span>Notes</span>
+                <button id="add-btn" class="cursor-pointer ml-3 text-xs border border-slate-200 rounded-full px-3 py-1 hover:bg-slate-100">
+                    + New
+                </button>
+                <!-- small notebook icon -->
+                <span class="inline-flex items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 p-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="6" y="4" width="12" height="16" rx="2"></rect>
+                        <path d="M9 8h6M9 12h4"></path>
+                    </svg>
+                </span>
+                <span id="section-title">Notes</span>
+            </h2>
+
+            <ul class="all-cards grid gap-4 sm:grid-cols-1 lg:grid-cols-1" id="all-cards">
+                
+            </ul>
+        </div>
+
+        <!--Tasks/Notes-->
+        <div class="detail-panel w-full lg:w-100 rounded-2xl p-5 flex flex-col gap-4">
+    <div>
+        <img src="./assets/task-notes.png" class="w-full rounded-xl mb-4" />
+    </div>
+
+    <div>
+        <h1 class="text-xl font-semibold text-slate-800 leading-snug" id="detailed-title"></h1>
+        <p class="text-xs font-medium text-orange-500 mt-1" id="category"></p>
+        <p class="text-sm text-slate-500 leading-relaxed mt-4" id="detailed-description">
+            Choose a task or a note.
+        </p>
+    </div>
+
+    <div class="mt-4 pt-4 border-t border-slate-100 space-y-4">
+        <div class="flex items-center justify-between">
+            <p class="text-xs text-slate-500" id="detailed-created-at">15 min ago</p>
+            <button class="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600 cursor-pointer text-xs" id="detailed-edit">
+                <span>Edit</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 20h4l10-10-4-4L4 16z"></path>
+                </svg>
+            </button>
+        </div>
+        <button onclick="handleClick()" class="w-full border border-orange-200 px-3 py-2 rounded-full text-xs font-medium cursor-pointer bg-orange-100 text-orange-700 hover:bg-orange-200 transition" id="status">
+            Not completed
+        </button>
+    </div>
+</div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

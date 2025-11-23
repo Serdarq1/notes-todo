@@ -1,0 +1,97 @@
+/* Google Font: Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        sans-serif !important;
+    letter-spacing: -0.2px;
+    color: #0f172a; /* slate-900 */
+    background-color: #f1f5f9; /* slate-100 */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* General transitions */
+* {
+    transition: all 0.15s ease-in-out;
+}
+
+/* Navbar refinement */
+.navbar {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: linear-gradient(to right, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.95));
+    backdrop-filter: blur(14px);
+}
+
+/* Sidebar card */
+.sidebar-card {
+    position: sticky;
+    top: 5.5rem;
+}
+
+/* Sidebar section label */
+.sidebar-card p {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Navigation items */
+.nav-item {
+    color: #64748b; /* slate-500 */
+    font-size: 0.875rem;
+}
+
+.nav-item svg {
+    opacity: 0.8;
+}
+
+.nav-item:hover {
+    background-color: #eef2ff; /* indigo-50 */
+    color: #4338ca;           /* indigo-700 */
+}
+
+.nav-item:hover svg {
+    opacity: 1;
+}
+
+/* Active nav item */
+.nav-item.active {
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+    color: #4338ca;
+    box-shadow: 0 14px 30px rgba(129, 140, 248, 0.25);
+}
+
+/* Section title */
+.section-title {
+    color: #0f172a;
+}
+
+/* Note cards */
+.note-card {
+    background: radial-gradient(circle at top left, rgba(239, 246, 255, 0.8), #ffffff);
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+/* Hover states */
+.profile-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(129, 140, 248, 0.4);
+}
+
+ul li:hover {
+    cursor: pointer;
+}
