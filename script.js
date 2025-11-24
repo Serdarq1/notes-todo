@@ -41,16 +41,21 @@ async function loadData() {
         renderList(notesData);
 
          allCards.addEventListener("click", (event) => {
+            const deleteBtn = event.target.closest(".delete-btn");
+
+            if (deleteBtn) {
+                const id = parseInt(deleteBtn.dataset.id);
+                deleteItem(id);
+                return;
+            }
+
             const card = event.target.closest(".card-item");
             if (!card) return;
 
             const id = parseInt(card.dataset.id);
-
-            // find in allItems (so search also works)
             const item = allItems.find(x => x.id === id);
-            if (!item) return;
 
-            updateDetailPanel(item);
+            if (item) updateDetailPanel(item);
         });
 
         // Tab: Notes
@@ -91,6 +96,9 @@ function createCard(note) {
             </p>
             <div class="flex justify-between">
                 <p class="text-[11px] text-slate-400 mt-4">${note.createdAt}</p>
+                <button class="delete-btn text-[11px] text-orange-600 mt-4 cursor-pointer" data-id="${note.id}">
+                    Delete
+                </button>
             </div>
         </li>
     `;
@@ -142,6 +150,26 @@ function toggleStatus() {
                 statusIcon.classList.remove("bg-orange-500");
             }
         }
+    }
+}
+
+function deleteItem(id) {
+    notesData = notesData.filter(n => n.id !== id);
+
+    tasksData = tasksData.filter(t => t.id !== id);
+
+    allItems = [...notesData, ...tasksData];
+
+    const section = sectionTitle.textContent;
+    if (section === "Notes") renderList(notesData);
+    else renderList(tasksData);
+
+    if (curId === id) {
+        detailedTitle.textContent = "";
+        detailedDescription.textContent = "";
+        detailedCreatedAt.textContent = "";
+        category.textContent = "";
+        curId = null;
     }
 }
 
